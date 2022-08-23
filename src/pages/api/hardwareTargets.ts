@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 
-const mockHardwareTargets = [
+const mockHardwareTargets: HardwareTarget[] = [
   {
     provider: "AWS",
     instance: "m4.large",
@@ -52,6 +52,9 @@ const mockHardwareTargets = [
   },
 ];
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  res.status(200).json({ targets: mockHardwareTargets });
+export default function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<HardwareTarget[]>
+) {
+  res.status(200).json(mockHardwareTargets);
 }
