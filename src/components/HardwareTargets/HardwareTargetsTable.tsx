@@ -4,17 +4,30 @@ export type SelectedHardwareTarget = Partial<HardwareTarget> & {
   id: number;
 };
 
+// Shape of hardware targets easier to work with for selecting options.
+type HardwareTargetOptions = Record<
+  HardwareProvider,
+  Record<
+    HardwareTarget["instance"],
+    Omit<HardwareTarget, "provider" | "instance">
+  >
+>;
+
 export type HardwareTargetsTableProps = {
-  availableTargets: HardwareTarget[];
+  availableTargets: HardwareTargetOptions;
   targets: SelectedHardwareTarget[];
   onRemove: (id: number) => void;
+  onModify: (id: number, property: string, value: unknown) => void;
 };
 
 const HardwareTargetsTable = ({
   targets,
   availableTargets,
   onRemove,
+  onModify,
 }: HardwareTargetsTableProps) => {
+  console.log(targets);
+
   return (
     <div>
       <table>
@@ -33,7 +46,9 @@ const HardwareTargetsTable = ({
               <HardwareTargetRow
                 key={target.id}
                 {...target}
+                availableTargets={availableTargets}
                 onRemove={onRemove}
+                onModify={onModify}
               />
             );
           })}

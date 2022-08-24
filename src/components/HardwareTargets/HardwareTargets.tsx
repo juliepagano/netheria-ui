@@ -5,7 +5,8 @@ import HardwareTargetsTable, {
 } from "./HardwareTargetsTable";
 
 const HardwareTargets = () => {
-  const [availableTargets, setAvailableTargets] = useState<HardwareTarget[]>();
+  const [availableTargets, setAvailableTargets] =
+    useState<HardwareTargetsTableProps["availableTargets"]>();
   const [targets, setTargets] = useState<HardwareTargetsTableProps["targets"]>([
     {
       id: 0,
@@ -14,9 +15,22 @@ const HardwareTargets = () => {
 
   useEffect(() => {
     const fetchHardwareTargets = async () => {
-      const results = await getHardwareTargets();
+      const targetResults = await getHardwareTargets();
 
-      setAvailableTargets(results);
+      const targetResultMap: HardwareTargetsTableProps["availableTargets"] =
+        targetResults.reduce(
+          (resultMap, { provider, instance, ...otherTarget }) => {
+            if (!resultMap[provider]) {
+              resultMap[provider] = {};
+            }
+            resultMap[provider][instance] = otherTarget;
+
+            return resultMap;
+          },
+          {} as HardwareTargetsTableProps["availableTargets"]
+        );
+
+      setAvailableTargets(targetResultMap);
     };
 
     fetchHardwareTargets();
@@ -30,6 +44,26 @@ const HardwareTargets = () => {
           id: prevTargets.length + 1,
         },
       ];
+    });
+  };
+
+  const handleModify: HardwareTargetsTableProps["onModify"] = (
+    id,
+    property,
+    newValue
+  ) => {
+    setTargets((prevTargets) => {
+      return prevTargets.map((target) => {
+        if (target.id === id) {
+          // This isn't quite correct.
+          // TODO: add logic for reset cases and setting machine specs.
+          return {
+            ...target,
+            [property]: newValue,
+          };
+        }
+        return target;
+      });
     });
   };
 
@@ -50,6 +84,7 @@ const HardwareTargets = () => {
           availableTargets={availableTargets}
           targets={targets}
           onRemove={handleRemove}
+          onModify={handleModify}
         />
       )}
     </section>

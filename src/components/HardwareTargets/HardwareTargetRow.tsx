@@ -1,9 +1,10 @@
 import HardwareTargetsTable, {
   HardwareTargetsTableProps,
 } from "./HardwareTargetsTable";
+import Select, { SelectProps } from "../common/Select";
 
 type HardwareTargetRowProps = HardwareTargetsTableProps["targets"][number] &
-  Pick<HardwareTargetsTableProps, "onRemove">;
+  Pick<HardwareTargetsTableProps, "onRemove" | "onModify" | "availableTargets">;
 
 const HardwareTargetRow = ({
   id,
@@ -12,15 +13,54 @@ const HardwareTargetRow = ({
   cpu,
   memory,
   onRemove,
+  onModify,
+  availableTargets,
 }: HardwareTargetRowProps) => {
   const handleRemove = () => {
     onRemove(id);
   };
 
+  const handleSetProviderValue: SelectProps["onSelect"] = (name, value) => {
+    console.log(name, value);
+
+    onModify(id, name, value);
+  };
+
+  const providerOptions = Object.keys(availableTargets).map((provider) => {
+    return {
+      value: provider,
+    };
+  });
+
+  const instanceOptions =
+    provider &&
+    availableTargets[provider] &&
+    Object.keys(availableTargets[provider]).map((instance) => {
+      return {
+        value: instance,
+      };
+    });
+
   return (
     <tr>
-      <td>{provider || "select provider"}</td>
-      <td>{instance}</td>
+      <td>
+        <Select
+          options={providerOptions}
+          name="provider"
+          onSelect={handleSetProviderValue}
+          value={provider}
+        />
+      </td>
+      <td>
+        {instanceOptions && (
+          <Select
+            options={instanceOptions}
+            name="instance"
+            onSelect={handleSetProviderValue}
+            value={instance}
+          />
+        )}
+      </td>
       <td>{cpu}</td>
       <td>{memory}</td>
       <td>
