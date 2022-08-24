@@ -1,4 +1,5 @@
 import SelectPane, { SelectPaneProps } from "../SelectPane";
+import HardwareTargets from "../HardwareTargets";
 import { useState } from "react";
 
 import styles from "./OctomizeContainer.module.scss";
@@ -52,6 +53,7 @@ const OctomizeContainer = () => {
           />
         );
       })}
+      <HardwareTargets />
     </section>
   );
 };
