@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import OctomizeContainer from "../components/OctomizeContainer";
 
 const HomePage: NextPage = () => {
   return (
@@ -12,6 +13,7 @@ const HomePage: NextPage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <OctomizeContainer />
     </div>
   );
 };
