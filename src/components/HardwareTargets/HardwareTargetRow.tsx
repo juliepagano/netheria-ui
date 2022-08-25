@@ -21,8 +21,6 @@ const HardwareTargetRow = ({
   };
 
   const handleSetProviderValue: SelectProps["onSelect"] = (name, value) => {
-    console.log(name, value);
-
     onModify(id, name, value);
   };
 

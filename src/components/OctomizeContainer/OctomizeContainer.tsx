@@ -3,8 +3,18 @@ import TotalRuns from "../TotalRuns";
 import { useEffect, useState } from "react";
 import { getHardwareTargets } from "../../services/internalService";
 import { HardwareTargetsTableProps } from "../HardwareTargets/HardwareTargetsTable";
+import { SelectPaneProps } from "../SelectPane";
 
 import styles from "./OctomizeContainer.module.scss";
+
+const INIT_ACTION_STATE: OctomizeActionOptions = {
+  benchmark: {
+    selected: false,
+  },
+  accelerate: {
+    selected: false,
+  },
+};
 
 const OctomizeContainer = () => {
   const [availableTargets, setAvailableTargets] =
@@ -14,6 +24,8 @@ const OctomizeContainer = () => {
       id: 0,
     },
   ]);
+  const [actions, setActions] =
+    useState<OctomizeActionOptions>(INIT_ACTION_STATE);
 
   useEffect(() => {
     const fetchHardwareTargets = async () => {
@@ -37,7 +49,7 @@ const OctomizeContainer = () => {
     fetchHardwareTargets();
   }, []);
 
-  const handleAdd = () => {
+  const handleAddHardwareTarget = () => {
     setTargets((prevTargets) => {
       return [
         ...prevTargets,
@@ -48,7 +60,7 @@ const OctomizeContainer = () => {
     });
   };
 
-  const handleModify: HardwareTargetsTableProps["onModify"] = (
+  const handleModifyHardwareTarget: HardwareTargetsTableProps["onModify"] = (
     id,
     property,
     newValue
@@ -88,9 +100,21 @@ const OctomizeContainer = () => {
     });
   };
 
-  const handleRemove = (id: number) => {
+  const handleRemoveHardwareTarget = (id: number) => {
     setTargets((prevTargets) => {
       return [...prevTargets].filter((target) => target.id !== id);
+    });
+  };
+
+  const handleModifyAction = (
+    name: OctomizeActionType,
+    newValue: OctomizeAction
+  ) => {
+    setActions((prevActions) => {
+      return {
+        ...prevActions,
+        [name]: newValue,
+      };
     });
   };
 
@@ -101,11 +125,13 @@ const OctomizeContainer = () => {
           <OctomizeConfigContainer
             availableTargets={availableTargets}
             targets={targets}
-            onAdd={handleAdd}
-            onRemove={handleRemove}
-            onModify={handleModify}
+            onAddHardwareTarget={handleAddHardwareTarget}
+            onRemoveHardwareTarget={handleRemoveHardwareTarget}
+            onModifyHardwareTarget={handleModifyHardwareTarget}
+            actions={actions}
+            onChangeAction={handleModifyAction}
           />
-          <TotalRuns targets={targets} />
+          <TotalRuns targets={targets} actions={actions} />
         </>
       )}
     </div>

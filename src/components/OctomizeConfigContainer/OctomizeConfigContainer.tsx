@@ -6,7 +6,17 @@ import styles from "./OctomizeConfigContainer.module.scss";
 
 type PaneState = Record<string, boolean>;
 
-type OctomizeConfigContainerProps = HardwareTargetsProps;
+type OctomizeConfigContainerProps = Pick<
+  HardwareTargetsProps,
+  "availableTargets" | "targets"
+> & {
+  onModifyHardwareTarget: HardwareTargetsProps["onModify"];
+  onAddHardwareTarget: HardwareTargetsProps["onAdd"];
+  onRemoveHardwareTarget: HardwareTargetsProps["onRemove"];
+
+  actions: OctomizeActionOptions;
+  onChangeAction: (name: OctomizeActionType, newValue: OctomizeAction) => void;
+};
 
 const PANE_CONFIG: Omit<SelectPaneProps, "onSelect">[] = [
   {
@@ -28,17 +38,16 @@ const INIT_PANE_STATE = Object.fromEntries(
 );
 
 const OctomizeConfigContainer = ({
-  ...hardwareProps
+  actions,
+  onChangeAction,
+  onAddHardwareTarget: onAddHardwareTargets,
+  onModifyHardwareTarget: onModifyHardwareTargets,
+  onRemoveHardwareTarget: onRemoveHardwareTargets,
+  ...otherHardwareProps
 }: OctomizeConfigContainerProps) => {
-  const [selectedPanes, setSelectedPanes] =
-    useState<PaneState>(INIT_PANE_STATE);
-
   const onSelectPane: SelectPaneProps["onSelect"] = (name, selected) => {
-    setSelectedPanes((prevSelectedPanes) => {
-      return {
-        ...prevSelectedPanes,
-        [name]: selected,
-      };
+    onChangeAction(name as OctomizeActionType, {
+      selected,
     });
   };
 
@@ -52,12 +61,17 @@ const OctomizeConfigContainer = ({
           <SelectPane
             key={pane.name}
             {...pane}
-            selected={selectedPanes[pane.name]}
+            selected={!!actions[pane.name as OctomizeActionType]?.selected}
             onSelect={onSelectPane}
           />
         );
       })}
-      <HardwareTargets {...hardwareProps} />
+      <HardwareTargets
+        {...otherHardwareProps}
+        onAdd={onAddHardwareTargets}
+        onRemove={onRemoveHardwareTargets}
+        onModify={onModifyHardwareTargets}
+      />
     </section>
   );
 };

@@ -12,7 +12,7 @@ export type SelectProps = {
   placeholder?: string;
 
   // TODO: need to fix some typing here.
-  onSelect: (name: string, value: unknown) => void;
+  onSelect: (name: string, value?: string | number) => void;
 };
 
 const Select = ({

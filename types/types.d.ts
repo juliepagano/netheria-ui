@@ -19,3 +19,11 @@ type HardwareTargetOptions = Record<
 type SelectedHardwareTarget = Partial<HardwareTarget> & {
   id: number;
 };
+
+type OctomizeActionType = "benchmark" | "accelerate";
+
+type OctomizeAction = {
+  selected: boolean;
+};
+
+type OctomizeActionOptions = Record<OctomizeActionType, OctomizeAction>;
