@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "e2e": "cypress open",
+    "e2e:ci": "cypress run --browser=chrome"
   },
   "dependencies": {
     "next": "12.2.5",
@@ -17,6 +19,7 @@
     "@types/node": "18.7.10",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
+    "cypress": "^10.6.0",
     "eslint": "8.22.0",
     "eslint-config-next": "12.2.5",
     "eslint-config-prettier": "^8.5.0",
