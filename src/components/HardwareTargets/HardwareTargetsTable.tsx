@@ -1,17 +1,17 @@
 import HardwareTargetRow from "./HardwareTargetRow";
 
-export type SelectedHardwareTarget = Partial<HardwareTarget> & {
-  id: number;
-};
+// export type SelectedHardwareTarget = Partial<HardwareTarget> & {
+//   id: number;
+// };
 
-// Shape of hardware targets easier to work with for selecting options.
-type HardwareTargetOptions = Record<
-  HardwareProvider,
-  Record<
-    HardwareTarget["instance"],
-    Omit<HardwareTarget, "provider" | "instance">
-  >
->;
+// // Shape of hardware targets easier to work with for selecting options.
+// type HardwareTargetOptions = Record<
+//   HardwareProvider,
+//   Record<
+//     HardwareTarget["instance"],
+//     Omit<HardwareTarget, "provider" | "instance">
+//   >
+// >;
 
 export type HardwareTargetsTableProps = {
   availableTargets: HardwareTargetOptions;

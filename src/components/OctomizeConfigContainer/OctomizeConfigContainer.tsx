@@ -1,10 +1,12 @@
 import SelectPane, { SelectPaneProps } from "../SelectPane";
-import HardwareTargets from "../HardwareTargets";
+import HardwareTargets, { HardwareTargetsProps } from "../HardwareTargets";
 import { useState } from "react";
 
 import styles from "./OctomizeConfigContainer.module.scss";
 
 type PaneState = Record<string, boolean>;
+
+type OctomizeConfigContainerProps = HardwareTargetsProps;
 
 const PANE_CONFIG: Omit<SelectPaneProps, "onSelect">[] = [
   {
@@ -25,7 +27,9 @@ const INIT_PANE_STATE = Object.fromEntries(
   PANE_CONFIG.map(({ name }) => [name, false])
 );
 
-const OctomizeConfigContainer = () => {
+const OctomizeConfigContainer = ({
+  ...hardwareProps
+}: OctomizeConfigContainerProps) => {
   const [selectedPanes, setSelectedPanes] =
     useState<PaneState>(INIT_PANE_STATE);
 
@@ -53,7 +57,7 @@ const OctomizeConfigContainer = () => {
           />
         );
       })}
-      <HardwareTargets />
+      <HardwareTargets {...hardwareProps} />
     </section>
   );
 };
