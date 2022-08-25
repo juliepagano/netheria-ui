@@ -9,12 +9,19 @@ export type SelectProps = {
   name: string;
   options: SelectOption[];
   value: string | number | undefined;
+  placeholder?: string;
 
   // TODO: need to fix some typing here.
   onSelect: (name: string, value: unknown) => void;
 };
 
-const Select = ({ options, name, value, onSelect }: SelectProps) => {
+const Select = ({
+  options,
+  name,
+  value,
+  placeholder,
+  onSelect,
+}: SelectProps) => {
   const handleOnChange: SelectHTMLAttributes<HTMLSelectElement>["onChange"] = (
     e
   ) => {
@@ -23,6 +30,7 @@ const Select = ({ options, name, value, onSelect }: SelectProps) => {
 
   return (
     <select onChange={handleOnChange} name={name} value={value}>
+      {placeholder && <option>{placeholder}</option>}
       {options.map(({ value, label }) => {
         return (
           <option key={value} value={value}>

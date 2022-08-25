@@ -55,12 +55,32 @@ const HardwareTargets = () => {
     setTargets((prevTargets) => {
       return prevTargets.map((target) => {
         if (target.id === id) {
-          // This isn't quite correct.
-          // TODO: add logic for reset cases and setting machine specs.
-          return {
-            ...target,
-            [property]: newValue,
-          };
+          // TODO: this is pretty yucky and could use cleaning up.
+          if (property === "provider" && typeof newValue === "string") {
+            // Reset other values because the provider changed.
+            return {
+              id: target.id,
+              // NOTE: I know this isn't the best TS practice, but for the
+              // purposes of this exercise, I don't want to do a bunch of
+              // fighting with generics to do this the "right" way.
+              provider: newValue as HardwareProvider,
+            };
+          }
+          if (
+            availableTargets &&
+            property === "instance" &&
+            typeof newValue === "string" &&
+            target.provider
+          ) {
+            const instance = availableTargets[target.provider][newValue];
+
+            return {
+              ...target,
+              instance: newValue,
+              cpu: instance.cpu,
+              memory: instance.memory,
+            };
+          }
         }
         return target;
       });

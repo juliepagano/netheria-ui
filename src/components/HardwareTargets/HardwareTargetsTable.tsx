@@ -17,7 +17,11 @@ export type HardwareTargetsTableProps = {
   availableTargets: HardwareTargetOptions;
   targets: SelectedHardwareTarget[];
   onRemove: (id: number) => void;
-  onModify: (id: number, property: string, value: unknown) => void;
+  onModify: (
+    id: number,
+    property: string,
+    value: string | number | undefined
+  ) => void;
 };
 
 const HardwareTargetsTable = ({
@@ -26,8 +30,6 @@ const HardwareTargetsTable = ({
   onRemove,
   onModify,
 }: HardwareTargetsTableProps) => {
-  console.log(targets);
-
   return (
     <div>
       <table>
