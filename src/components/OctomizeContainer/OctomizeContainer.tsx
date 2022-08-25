@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { getHardwareTargets } from "../../services/internalService";
 import { HardwareTargetsTableProps } from "../HardwareTargets/HardwareTargetsTable";
 
+import styles from "./OctomizeContainer.module.scss";
+
 const OctomizeContainer = () => {
   const [availableTargets, setAvailableTargets] =
     useState<HardwareTargetOptions>();
@@ -93,7 +95,7 @@ const OctomizeContainer = () => {
   };
 
   return (
-    <div>
+    <div className={styles.root}>
       {availableTargets && (
         <>
           <OctomizeConfigContainer

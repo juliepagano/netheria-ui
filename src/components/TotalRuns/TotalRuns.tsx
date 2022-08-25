@@ -1,3 +1,5 @@
+import styles from "./TotalRuns.module.scss";
+
 type TotalRunsProps = {
   targets: SelectedHardwareTarget[];
 };
@@ -9,7 +11,7 @@ const TotalRuns = ({ targets }: TotalRunsProps) => {
   );
 
   return (
-    <section>
+    <section className={styles.root}>
       <h2>Total Runs: {validTargets.length}</h2>
       <ul>
         {validTargets.map((target) => {
