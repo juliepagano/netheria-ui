@@ -103,7 +103,7 @@ const OctomizeContainer = () => {
             onRemove={handleRemove}
             onModify={handleModify}
           />
-          <TotalRuns />
+          <TotalRuns targets={targets} />
         </>
       )}
     </div>
