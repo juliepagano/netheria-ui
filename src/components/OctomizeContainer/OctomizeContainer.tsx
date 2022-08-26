@@ -79,19 +79,23 @@ const OctomizeContainer = () => {
               provider: newValue as HardwareProvider,
             };
           }
-          if (
-            availableTargets &&
-            property === "instance" &&
-            typeof newValue === "string" &&
-            target.provider
-          ) {
-            const instance = availableTargets[target.provider][newValue];
+          if (availableTargets && property === "instance" && target.provider) {
+            if (typeof newValue === "string") {
+              const instance = availableTargets[target.provider][newValue];
+              if (instance) {
+                return {
+                  ...target,
+                  instance: newValue,
+                  cpu: instance.cpu,
+                  memory: instance.memory,
+                };
+              }
+            }
 
             return {
-              ...target,
-              instance: newValue,
-              cpu: instance.cpu,
-              memory: instance.memory,
+              id: target.id,
+              provider: target.provider,
+              // Leave the rest undefined because the instance is being unset.
             };
           }
         }
