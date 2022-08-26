@@ -5,4 +5,54 @@
   padding: 24px;
   width: 287px;
   flex: 0 0 auto;
+
+  ul {
+    list-style: none;
+    margin: 24px 0 0 0;
+    padding: 0;
+  }
+
+  li {
+    margin: 0 0 20px 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.label {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: right;
+  color: #7B818A;
+}
+
+.totalValue {
+  text-align: right;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 136.52%;
+  color: #4DB296;
+}
+
+.entryLabel {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #2E3238;
+}
+
+.entrySubtitle {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #91969C;
+}
+
+.entryCount {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #4DB396;
 }

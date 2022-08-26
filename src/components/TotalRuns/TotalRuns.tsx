@@ -13,22 +13,26 @@ const TotalRuns = ({ targets, actions }: TotalRunsProps) => {
 
   const totalTargets = validTargets.length;
   const totalActions = Object.values(actions).filter((a) => a.selected).length;
-  const TotalRuns = totalTargets * totalActions;
+  const totalRuns = totalTargets * totalActions;
 
   return (
     <section className={styles.root}>
-      <h2>Total Runs: {TotalRuns}</h2>
+      <div className={styles.label}>Total Runs</div>
+      <div className={styles.totalValue}>{totalRuns}</div>
       <ul>
         {validTargets.map((target) => {
           return (
             <li key={target.id}>
-              <div>{target.instance}</div>
-              <div>{target.cpu} cores</div>
+              <div>
+                <div className={styles.entryLabel}>{target.instance}</div>
+                <div className={styles.entrySubtitle}>{target.cpu} cores</div>
+              </div>
+              <div className={styles.entryCount}>{totalActions}</div>
             </li>
           );
         })}
       </ul>
-      {TotalRuns > 0 && <button type="button">Octomize</button>}
+      {totalRuns > 0 && <button type="button">Octomize</button>}
     </section>
   );
 };
