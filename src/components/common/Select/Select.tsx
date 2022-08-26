@@ -10,8 +10,6 @@ export type SelectProps = {
   options: SelectOption[];
   value?: string | number;
   placeholder?: string;
-
-  // TODO: need to fix some typing here.
   onSelect: (name: string, value?: string | number) => void;
 };
 
