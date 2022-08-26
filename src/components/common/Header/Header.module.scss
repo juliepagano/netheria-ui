@@ -28,6 +28,16 @@
       padding: 0;
     }
   }
+
+
+  a {
+    &:hover {
+      // Using change in opacity as a quick way to communicate hover events, so
+      // I don't have to deal with inlining and trying to change colors on svgs
+      // for the purposes of this exercise.
+      opacity: 0.8;
+    }
+  }
 }
 
 .profile {

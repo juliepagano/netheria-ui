@@ -1,3 +1,8 @@
+import RemoveSvg from "../../../public/remove.svg";
+import Image from "next/image";
+
+import styles from "./HardwareTargets.module.scss";
+
 import HardwareTargetsTable, {
   HardwareTargetsTableProps,
 } from "./HardwareTargetsTable";
@@ -41,7 +46,7 @@ const HardwareTargetRow = ({
 
   return (
     <tr>
-      <td>
+      <td className={styles.selectCell}>
         <Select
           options={providerOptions}
           placeholder="Select Provider"
@@ -50,7 +55,7 @@ const HardwareTargetRow = ({
           value={provider}
         />
       </td>
-      <td>
+      <td className={styles.selectCell}>
         {instanceOptions && (
           <Select
             options={instanceOptions}
@@ -61,11 +66,11 @@ const HardwareTargetRow = ({
           />
         )}
       </td>
-      <td>{cpu}</td>
-      <td>{memory}</td>
-      <td>
+      <td className={styles.numberCell}>{cpu}</td>
+      <td className={styles.numberCell}>{memory}</td>
+      <td className={styles.removeCell}>
         <button type="button" onClick={handleRemove}>
-          remove
+          <Image src={RemoveSvg} alt="remove" />
         </button>
       </td>
     </tr>

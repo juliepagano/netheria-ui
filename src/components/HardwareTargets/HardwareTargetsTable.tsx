@@ -1,4 +1,5 @@
 import HardwareTargetRow from "./HardwareTargetRow";
+import cx from "classnames";
 
 import styles from "./HardwareTargets.module.scss";
 
@@ -23,11 +24,13 @@ const HardwareTargetsTable = ({
     <table className={styles.table}>
       <thead>
         <tr>
-          <th className={styles.primaryHeader}>Provider</th>
-          <th>Instance</th>
-          <th>VCPU</th>
-          <th>Memory (GiB)</th>
-          <th />
+          <th className={cx(styles.primaryHeader, styles.selectCell)}>
+            Provider
+          </th>
+          <th className={styles.selectCell}>Instance</th>
+          <th className={styles.numberCell}>VCPU</th>
+          <th className={styles.numberCell}>Memory (GiB)</th>
+          <th className={styles.removeCell} />
         </tr>
       </thead>
       <tbody>
