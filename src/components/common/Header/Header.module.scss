@@ -1,0 +1,27 @@
+.root {
+  width: 64px;
+  padding: 16px;
+  background: #FFFFFF;
+  box-shadow: 6px 0px 18px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  nav {
+    margin: 84px 0 0 0;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    li {
+      margin: 0 0 73px 0;
+      padding: 0;
+    }
+  }
+}
