@@ -123,22 +123,30 @@ const OctomizeContainer = () => {
   };
 
   return (
-    <div className={styles.root}>
-      {availableTargets && (
-        <>
-          <OctomizeConfigContainer
-            availableTargets={availableTargets}
-            targets={targets}
-            onAddHardwareTarget={handleAddHardwareTarget}
-            onRemoveHardwareTarget={handleRemoveHardwareTarget}
-            onModifyHardwareTarget={handleModifyHardwareTarget}
-            actions={actions}
-            onChangeAction={handleModifyAction}
-          />
-          <TotalRuns targets={targets} actions={actions} />
-        </>
-      )}
-    </div>
+    <section className={styles.root}>
+      <header>
+        <h2>Shufflenet-v2.onnx</h2>
+        <div className={styles.details}>
+          Created three days ago by Mike Johnson
+        </div>
+      </header>
+      <div className={styles.content}>
+        {availableTargets && (
+          <>
+            <OctomizeConfigContainer
+              availableTargets={availableTargets}
+              targets={targets}
+              onAddHardwareTarget={handleAddHardwareTarget}
+              onRemoveHardwareTarget={handleRemoveHardwareTarget}
+              onModifyHardwareTarget={handleModifyHardwareTarget}
+              actions={actions}
+              onChangeAction={handleModifyAction}
+            />
+            <TotalRuns targets={targets} actions={actions} />
+          </>
+        )}
+      </div>
+    </section>
   );
 };
 export default OctomizeContainer;

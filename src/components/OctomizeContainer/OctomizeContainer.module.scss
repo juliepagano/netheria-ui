@@ -2,14 +2,34 @@
   $max-width: 1196px;
   $min-margin: 32px;
 
-  display: flex;
-  gap: 16px;
-  margin: 32px;
-  align-items: flex-start;
-
+  margin: 80px $min-margin;
 
   @media screen and (min-width: ($max-width + $min-margin * 2)) {
-    margin: 32px auto;
+    margin: 80px auto;
     max-width: $max-width;
   }
+
+  > header {
+    color: #555B62;
+    margin: 0 0 48px 0;
+
+    h2 {
+      font-size: 36px;
+      line-height: 40px;
+      margin: 0 0 4px 0;
+      letter-spacing: -0.03em;
+    }
+  }
+}
+
+.details {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.content {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
 }

@@ -54,7 +54,7 @@ const OctomizeConfigContainer = ({
   return (
     <section className={styles.root}>
       <header>
-        <h2>Octomize</h2>
+        <h3>Octomize</h3>
       </header>
       {PANE_CONFIG.map((pane) => {
         return (

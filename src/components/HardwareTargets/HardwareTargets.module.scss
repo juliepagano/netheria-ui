@@ -1,0 +1,57 @@
+.root {
+  margin: 64px 0 0 0;
+
+
+}
+
+.heading {
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+
+  h4 {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #7B818A;
+    margin: 0;
+  }
+
+  button {
+    background: #0180FF;
+    color: #fff;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    padding: 8px 16px;
+    border: none;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+
+    &:hover {
+      background: darken(#0180FF, 1%);
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+
+  th {
+    border-bottom: solid 1px #E0E0E0;
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    color: #7B818A;
+    padding: 10px;
+    letter-spacing: 0.1em;
+  }
+
+  .primaryHeader {
+    color: #0180FF;
+  }
+}

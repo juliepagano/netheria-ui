@@ -1,17 +1,6 @@
 import HardwareTargetRow from "./HardwareTargetRow";
 
-// export type SelectedHardwareTarget = Partial<HardwareTarget> & {
-//   id: number;
-// };
-
-// // Shape of hardware targets easier to work with for selecting options.
-// type HardwareTargetOptions = Record<
-//   HardwareProvider,
-//   Record<
-//     HardwareTarget["instance"],
-//     Omit<HardwareTarget, "provider" | "instance">
-//   >
-// >;
+import styles from "./HardwareTargets.module.scss";
 
 export type HardwareTargetsTableProps = {
   availableTargets: HardwareTargetOptions;
@@ -31,32 +20,30 @@ const HardwareTargetsTable = ({
   onModify,
 }: HardwareTargetsTableProps) => {
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Provider</th>
-            <th>Instance</th>
-            <th>VCPU</th>
-            <th>Memory (GiB)</th>
-            <th />
-          </tr>
-        </thead>
-        <tbody>
-          {targets.map((target) => {
-            return (
-              <HardwareTargetRow
-                key={target.id}
-                {...target}
-                availableTargets={availableTargets}
-                onRemove={onRemove}
-                onModify={onModify}
-              />
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+    <table className={styles.table}>
+      <thead>
+        <tr>
+          <th className={styles.primaryHeader}>Provider</th>
+          <th>Instance</th>
+          <th>VCPU</th>
+          <th>Memory (GiB)</th>
+          <th />
+        </tr>
+      </thead>
+      <tbody>
+        {targets.map((target) => {
+          return (
+            <HardwareTargetRow
+              key={target.id}
+              {...target}
+              availableTargets={availableTargets}
+              onRemove={onRemove}
+              onModify={onModify}
+            />
+          );
+        })}
+      </tbody>
+    </table>
   );
 };
 export default HardwareTargetsTable;

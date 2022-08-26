@@ -4,6 +4,8 @@ import HardwareTargetsTable, {
   HardwareTargetsTableProps,
 } from "./HardwareTargetsTable";
 
+import styles from "./HardwareTargets.module.scss";
+
 export type HardwareTargetsProps = Pick<
   HardwareTargetsTableProps,
   "availableTargets" | "targets" | "onModify" | "onRemove"
@@ -19,11 +21,13 @@ const HardwareTargets = ({
   onRemove,
 }: HardwareTargetsProps) => {
   return (
-    <section>
-      <h3>Hardware targets</h3>
-      <button type="button" onClick={onAdd}>
-        add
-      </button>
+    <div className={styles.root}>
+      <div className={styles.heading}>
+        <h4>Hardware targets</h4>
+        <button type="button" onClick={onAdd}>
+          Add
+        </button>
+      </div>
       {availableTargets && (
         <HardwareTargetsTable
           availableTargets={availableTargets}
@@ -32,7 +36,7 @@ const HardwareTargets = ({
           onModify={onModify}
         />
       )}
-    </section>
+    </div>
   );
 };
 
