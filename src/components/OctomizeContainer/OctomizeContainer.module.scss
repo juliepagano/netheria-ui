@@ -1,5 +1,15 @@
 .root {
+  $max-width: 1196px;
+  $min-margin: 32px;
+
   display: flex;
   gap: 16px;
   margin: 32px;
+  align-items: flex-start;
+
+
+  @media screen and (min-width: ($max-width + $min-margin * 2)) {
+    margin: 32px auto;
+    max-width: $max-width;
+  }
 }

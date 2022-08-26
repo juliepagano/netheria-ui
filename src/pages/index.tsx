@@ -4,7 +4,7 @@ import OctomizeContainer from "../components/OctomizeContainer";
 
 const HomePage: NextPage = () => {
   return (
-    <div>
+    <>
       <Head>
         <title>Netheria</title>
         <meta
@@ -14,7 +14,7 @@ const HomePage: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <OctomizeContainer />
-    </div>
+    </>
   );
 };
 

@@ -1,4 +1,10 @@
 .root {
   display: flex;
   height: 100vh;
+
+  main {
+    height: 100%;
+    overflow: scroll;
+    flex: 1;
+  }
 }
