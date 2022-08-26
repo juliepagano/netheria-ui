@@ -1,3 +1,5 @@
+import Button from "../common/Button";
+
 import styles from "./TotalRuns.module.scss";
 
 type TotalRunsProps = {
@@ -32,7 +34,9 @@ const TotalRuns = ({ targets, actions }: TotalRunsProps) => {
           );
         })}
       </ul>
-      {totalRuns > 0 && <button type="button">Octomize</button>}
+      <Button disabled={totalRuns <= 0} size={"large"}>
+        Octomize
+      </Button>
     </section>
   );
 };

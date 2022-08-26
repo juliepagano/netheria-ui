@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import HardwareTargetsTable, {
   HardwareTargetsTableProps,
 } from "./HardwareTargetsTable";
+import Button from "../common/Button";
 
 import styles from "./HardwareTargets.module.scss";
 
@@ -24,9 +25,7 @@ const HardwareTargets = ({
     <div className={styles.root}>
       <div className={styles.heading}>
         <h4>Hardware targets</h4>
-        <button type="button" onClick={onAdd}>
-          Add
-        </button>
+        <Button onClick={onAdd}>Add</Button>
       </div>
       {availableTargets && (
         <HardwareTargetsTable
