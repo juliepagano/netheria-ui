@@ -1,4 +1,7 @@
 import { SelectHTMLAttributes, useEffect } from "react";
+import DownSvg from "../../../../public/down.svg";
+
+import styles from "./Select.module.scss";
 
 type SelectOption = {
   label?: string;
@@ -27,7 +30,15 @@ const Select = ({
   };
 
   return (
-    <select onChange={handleOnChange} name={name} value={value}>
+    <select
+      onChange={handleOnChange}
+      name={name}
+      value={value}
+      className={styles.root}
+      style={{
+        background: `url(${DownSvg.src}) no-repeat right 16px center`,
+      }}
+    >
       {placeholder && <option>{placeholder}</option>}
       {options.map(({ value, label }) => {
         return (

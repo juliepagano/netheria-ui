@@ -47,8 +47,22 @@
     font-size: 10px;
     line-height: 12px;
     color: #7B818A;
-    padding: 10px;
+    padding: 10px 10px 10px 0;
     letter-spacing: 0.1em;
+  }
+
+  tr:first-child {
+    td {
+      padding-top: 32px;
+    }
+  }
+
+  td {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #7B818A;
+    padding: 0 16px 16px 0;
   }
 
   .primaryHeader {

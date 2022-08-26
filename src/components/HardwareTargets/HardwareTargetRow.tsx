@@ -44,7 +44,7 @@ const HardwareTargetRow = ({
       <td>
         <Select
           options={providerOptions}
-          placeholder="Select Placeholder"
+          placeholder="Select Provider"
           name="provider"
           onSelect={handleSetProviderValue}
           value={provider}
