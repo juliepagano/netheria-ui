@@ -8,7 +8,7 @@ type SelectOption = {
 export type SelectProps = {
   name: string;
   options: SelectOption[];
-  value: string | number | undefined;
+  value?: string | number;
   placeholder?: string;
 
   // TODO: need to fix some typing here.
