@@ -15,18 +15,25 @@ const Header = () => {
           <li>
             <Link href="/">
               <a>
-                <Image src={Home} alt="Home" />
+                <Image src={Home} alt="home" />
               </a>
             </Link>
           </li>
           <li>
             <Link href="/">
               <a>
-                <Image src={Chart} alt="Analysis" />
+                <Image src={Chart} alt="analysis" />
               </a>
             </Link>
           </li>
         </ul>
+        <div className={styles.profile}>
+          <Link href="/">
+            <a aria-label="view profile">
+              <div className={styles.imgFallback} />
+            </a>
+          </Link>
+        </div>
       </nav>
     </header>
   );
