@@ -49,5 +49,19 @@ details.
 
 ## Exercise notes
 
-- had to setup separate tsconfig for project and cypress because otherwise you
-  end up in some type conflict sadness with cypress/jest
+- Had to setup separate tsconfig for project and cypress because otherwise you
+  end up in some type conflict sadness with cypress/jest.
+- This CSS and components are not as neatly refactored and organized into
+  modular pieces as I would do in a real PR on a real job, but I cut myself on
+  spending more time on it for the sake of time.
+- I would write more tests in a real job scenario, but also cutting myself off
+  for time.
+- I did minimial styling of the built-in browser form elements to save time
+  while easily getting accessibility (built-in browser components are good at
+  a11y).
+- I spent very little time on cross-browser testing.
+- I spent very little time on responsive design. This mostly works on a medium
+  laptop screen and bigger, which is probably the target demographic for your
+  product.
+- I chose to just implement the checkboxes (and not the additional select pane
+  options) for "benchmark" and "accelerate" for time.
