@@ -23,7 +23,7 @@ const TotalRuns = ({ targets, actions }: TotalRunsProps) => {
       <div className={styles.totalValue} data-testid="totalRuns">
         {totalRuns}
       </div>
-      <ul>
+      <ul data-testid="targetSummary">
         {validTargets.map((target) => {
           return (
             <li key={target.id}>
