@@ -126,3 +126,9 @@ sake of time.
 - I needed to set up separate tsconfigs for project and cypress because
   otherwise you end up in some type conflict issues with cypress/jest and their
   assertion libraries.
+  
+## Screenshots
+
+### Initial page load
+
+![Alt text](/screenshots/page-load.png)
