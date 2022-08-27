@@ -8,6 +8,8 @@ You may view a live version of this application hosted on Vercel at
 
 ## Getting started
 
+For local development:
+
 - Install dependencies: `npm install`
 - Run development server: `npm run dev`
 - View in browser by opening [http://localhost:3000](http://localhost:3000)
@@ -23,6 +25,11 @@ To run end-to-end tests with Cypress:
   - Click "Start E2E testing in Chrome." This will pop up a Chrome window for
     testing.
   - Click on the test you want to run.
+
+To build and run the production app locally:
+
+- Build app: `npm run build`
+- Start app: `npm start`
 
 ## Tools & libraries
 
