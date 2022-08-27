@@ -6,6 +6,8 @@ import Chart from "../../../../public/chart.svg";
 
 import styles from "./Header.module.scss";
 
+// All the links in here just go to the home page with octomize because I am
+// not implementing additional pages as part of this exercise.
 const Header = () => {
   return (
     <header className={styles.root}>

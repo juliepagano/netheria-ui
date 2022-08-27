@@ -69,3 +69,7 @@ details.
   used browserstack, selenium, and webdriver.io), so I'm pretty sure I'm not
   following best practices. However, this is the quickest way for me to add a
   few integration tests.
+
+## Notes to self
+
+- Remove weirdness with ids.

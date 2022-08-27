@@ -1,10 +1,5 @@
 import TotalRuns from "./TotalRuns";
-import {
-  render,
-  screen,
-  getByRole,
-  getAllByRole,
-} from "@testing-library/react";
+import { render, screen, getAllByRole } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 const MOCK_EMPTY_ACTIONS: OctomizeActionOptions = {
