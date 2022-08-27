@@ -12,7 +12,7 @@ describe("Benchmark only", () => {
       })
       .should("be.disabled");
 
-    cy.get("[data-test-id='totalRuns']").should("have.text", "0");
+    cy.get("[data-testid='totalRuns']").should("have.text", "0");
   });
 
   it("select some hardware targets", () => {
@@ -38,7 +38,7 @@ describe("Benchmark only", () => {
       })
       .should("be.disabled");
 
-    cy.get("[data-test-id='totalRuns']").should("have.text", "0");
+    cy.get("[data-testid='totalRuns']").should("have.text", "0");
   });
 
   it("selects both actions", () => {
@@ -53,6 +53,6 @@ describe("Benchmark only", () => {
       })
       .should("not.be.disabled");
 
-    cy.get("[data-test-id='totalRuns']").should("have.text", "6");
+    cy.get("[data-testid='totalRuns']").should("have.text", "6");
   });
 });
