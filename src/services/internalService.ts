@@ -9,3 +9,23 @@ export const getHardwareTargets = async (): Promise<HardwareTarget[]> => {
     return Promise.reject("Something went wrong retrieving hardware targets.");
   }
 };
+
+type SubmitOctomizeOps = {
+  targets: SelectedHardwareTarget[];
+  actions: OctomizeActionOptions;
+};
+
+export const submitOctomize = async (
+  ops: SubmitOctomizeOps
+): Promise<OctomizeResponse> => {
+  const response = await fetch("/api/octomize", {
+    method: "POST",
+    body: JSON.stringify(ops),
+  });
+
+  if (response.ok) {
+    return response.json();
+  } else {
+    return Promise.reject("Something went wrong Octomizing.");
+  }
+};

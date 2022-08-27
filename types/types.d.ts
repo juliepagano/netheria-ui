@@ -27,3 +27,7 @@ type OctomizeAction = {
 };
 
 type OctomizeActionOptions = Record<OctomizeActionType, OctomizeAction>;
+
+type OctomizeResponse = {
+  result: string;
+};
