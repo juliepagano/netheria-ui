@@ -126,9 +126,40 @@ sake of time.
 - I needed to set up separate tsconfigs for project and cypress because
   otherwise you end up in some type conflict issues with cypress/jest and their
   assertion libraries.
-  
+
 ## Screenshots
 
 ### Initial page load
 
-![Alt text](/screenshots/page-load.png)
+![screenshot](/screenshots/page-load.png)
+
+### Single target with no actions selected
+
+![screenshot](/screenshots/single-target-no-action.png)
+
+### Single target with accelerate
+
+![screenshot](/screenshots/single-target-accelerate.png)
+
+### Single target with benchmark
+
+![screenshot](/screenshots/single-target-benchmark.png)
+
+### Multiple targets with benchmark
+
+![screenshot](/screenshots/multiple-targets-benchmark.png)
+
+### Multiple targets with benchmark and accelerate
+
+![screenshot](/screenshots/multiple-targets-both-actions.png)
+
+### Loading state after clicking "Octomize" button
+
+![screenshot](/screenshots/octomizing.png)
+
+### What an open select looks like
+
+As noted in the notes for reviewers, I opted to use built-in selects for time
+and accessibility.
+
+![screenshot](/screenshots/open-select.png)
