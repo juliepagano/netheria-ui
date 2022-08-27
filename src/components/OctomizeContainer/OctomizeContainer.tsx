@@ -3,7 +3,6 @@ import TotalRuns from "../TotalRuns";
 import { useEffect, useState } from "react";
 import { getHardwareTargets } from "../../services/internalService";
 import { HardwareTargetsTableProps } from "../HardwareTargets/HardwareTargetsTable";
-import { SelectPaneProps } from "../SelectPane";
 
 import styles from "./OctomizeContainer.module.scss";
 
@@ -30,6 +29,8 @@ const OctomizeContainer = () => {
   useEffect(() => {
     const fetchHardwareTargets = async () => {
       const targetResults = await getHardwareTargets();
+
+      // Punting on handling errors because of time.
 
       const targetResultMap: HardwareTargetOptions = targetResults.reduce(
         (resultMap, { provider, instance, ...otherTarget }) => {

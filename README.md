@@ -69,7 +69,10 @@ details.
   used browserstack, selenium, and webdriver.io), so I'm pretty sure I'm not
   following best practices. However, this is the quickest way for me to add a
   few integration tests.
+- Error handling.
+- Mocking out more api calls.
 
 ## Notes to self
 
 - Remove weirdness with ids.
+- Call something when clicking octomize
