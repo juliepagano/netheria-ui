@@ -135,7 +135,7 @@ sake of time.
 
 ### Single target with no actions selected
 
-![screenshot](/screenshots/single-target-no-action.png)
+![screenshot](/screenshots/single-target-no-action2.png)
 
 ### Single target with accelerate
 
