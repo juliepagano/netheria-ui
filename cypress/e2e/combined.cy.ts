@@ -55,4 +55,14 @@ describe("Benchmark only", () => {
 
     cy.get("[data-testid='totalRuns']").should("have.text", "6");
   });
+
+  it("can remove a hardware target", () => {
+    cy.get("img[alt='remove']").first().closest("button").click();
+
+    // Removed from table
+    cy.get("tbody tr").should("have.length", 2);
+
+    // Reflected in total runs
+    cy.get("[data-testid='totalRuns']").should("have.text", "4");
+  });
 });
