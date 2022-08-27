@@ -23,6 +23,7 @@ const getId = () => {
   return lastId;
 };
 
+// Initialize with a single empty hardware target.
 const INIT_TARGETS = [
   {
     id: getId(),
@@ -43,6 +44,9 @@ const OctomizeContainer = () => {
 
       // Punting on handling errors because of time.
 
+      // Transform array of targets into a nested object of providers and
+      // instances, which will be much easier to work with in the rest of the
+      // code.
       const targetResultMap: HardwareTargetOptions = targetResults.reduce(
         (resultMap, { provider, instance, ...otherTarget }) => {
           if (!resultMap[provider]) {
@@ -65,6 +69,7 @@ const OctomizeContainer = () => {
     setTargets((prevTargets) => {
       return [
         ...prevTargets,
+        // Add a new empty hardware target.
         {
           id: getId(),
         },
@@ -79,8 +84,12 @@ const OctomizeContainer = () => {
   ) => {
     setTargets((prevTargets) => {
       return prevTargets.map((target) => {
+        // Only modify the target we're modifying. The rest can stay the same.
         if (target.id === id) {
           // TODO: this is pretty yucky and could use cleaning up.
+          // I punted on improving the readability of this code because of
+          // time constraints. It works fine and is well tested, but could be
+          // refactored for ease of readability/maintainability in the future.
           if (property === "provider" && typeof newValue === "string") {
             // Reset other values because the provider changed.
             return {
@@ -95,6 +104,8 @@ const OctomizeContainer = () => {
             if (typeof newValue === "string") {
               const instance = availableTargets[target.provider][newValue];
               if (instance) {
+                // Set the instance and the cpu/memory because we now have the
+                // provider and the instance.
                 return {
                   ...target,
                   instance: newValue,

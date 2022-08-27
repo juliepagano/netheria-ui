@@ -65,6 +65,15 @@ sake of time.
 - I chose to just implement the checkboxes (and not the additional select pane
   options) for "benchmark" and "accelerate" for time.
 
+#### Octomize submission
+
+- After clicking the "octomize" button, I render a very quick "loading" state by
+  changing the text of the button to "Octomizing..." while waiting for the mock
+  api to respond. This was done for time.
+- The mock api that is hit has a simple `setTimeout` of a few seconds to
+  simulate an api taking a little time to respond, so you can visibly see the
+  loading state mentioned above.
+
 #### Error handling
 
 - I did very little error handling within the UI to account for time. In a real
@@ -79,7 +88,8 @@ sake of time.
   time.
 - I did minimial styling of the built-in browser form elements to save time
   while easily getting accessibility (built-in browser components are good at
-  a11y).
+  a11y). I made minor CSS tweaks to make them look close-ish to the provided
+  designs.
 - I spent very little time on cross-browser testing. I developed on Chrome, so
   that is the browser most likely to behave well.
 - I'm very behind on the latest and greatest for cypress (my previous job mostly
@@ -87,12 +97,27 @@ sake of time.
   following current best practices. However, this is the quickest way for me to
   add a few integration tests. In a real project, I'd invest more time on
   getting up-to-speed to follow best practices.
+- There's a few places where I'm probably doing more in the render cycle than is
+  necessary and could do a bit of tuning for performance. I don't think there's
+  anything aggregious, but this is an area I would have spent a little more time
+  on a real project.
 
 #### Design
 
 - I spent very little time on responsive design. This mostly works on a medium
   laptop screen and bigger, which is the likely intended use case for a product
   like this.
+- There were a few inconsistences in the design (e.g. some of the header/content
+  alignment in the harware targets table). When this was the case, I went with
+  the result that looked the best to me (and hopefully for end users).
+- Given more time, I probably would have inlined some svg icons instead of
+  treating them as images, so I could change the stroke/fill on hover when used
+  as links. I did not to save time.
+
+#### Miscellaneous
+
+- Hardcoded the app name and the "created by" with timestamp. Ideally this would
+  also come from an API call.
 
 ### Miscellaneous technical notes
 

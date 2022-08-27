@@ -6,6 +6,9 @@ export default async function handler(
   res: NextApiResponse<OctomizeResponse>
 ) {
   const payload = JSON.parse(req.body);
+
+  // Console logs, so you can see what is submitted to the api if you want to
+  // when running locally.
   console.log("Octomizing!");
   console.log(payload);
 
