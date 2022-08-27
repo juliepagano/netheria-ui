@@ -15,14 +15,25 @@ const INIT_ACTION_STATE: OctomizeActionOptions = {
   },
 };
 
+// This is a super quick and dirty way to increment some identifiers. In a real
+// system we might want UUIDs or something else more complicated.
+let lastId = 0;
+const getId = () => {
+  lastId = lastId + 1;
+  return lastId;
+};
+
+const INIT_TARGETS = [
+  {
+    id: getId(),
+  },
+];
+
 const OctomizeContainer = () => {
   const [availableTargets, setAvailableTargets] =
     useState<HardwareTargetOptions>();
-  const [targets, setTargets] = useState<SelectedHardwareTarget[]>([
-    {
-      id: 0,
-    },
-  ]);
+  const [targets, setTargets] =
+    useState<SelectedHardwareTarget[]>(INIT_TARGETS);
   const [actions, setActions] =
     useState<OctomizeActionOptions>(INIT_ACTION_STATE);
 
@@ -55,7 +66,7 @@ const OctomizeContainer = () => {
       return [
         ...prevTargets,
         {
-          id: prevTargets.length + 1,
+          id: getId(),
         },
       ];
     });
