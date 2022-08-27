@@ -20,7 +20,9 @@ const TotalRuns = ({ targets, actions }: TotalRunsProps) => {
   return (
     <section className={styles.root}>
       <div className={styles.label}>Total Runs</div>
-      <div className={styles.totalValue}>{totalRuns}</div>
+      <div className={styles.totalValue} data-test-id="totalRuns">
+        {totalRuns}
+      </div>
       <ul>
         {validTargets.map((target) => {
           return (

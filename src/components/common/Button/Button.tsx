@@ -21,6 +21,7 @@ const Button = ({
       className={cx(styles.root, styles[size], {
         [styles.disabled]: !!disabled,
       })}
+      disabled={disabled}
       {...otherButtonProps}
     >
       {children}
